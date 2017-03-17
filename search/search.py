@@ -87,6 +87,7 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
+<<<<<<< HEAD
     dfs = util.Stack()
     dfs.push((problem.getStartState(), [], []))
     while (not dfs.isEmpty()):
@@ -98,6 +99,8 @@ def depthFirstSearch(problem):
                 return dfs
     return dfs
 
+=======
+>>>>>>> 044f01056fb99e5d66c085f0f54d39fd276247b9
     util.raiseNotDefined()
 
 def breadthFirstSearch(problem):

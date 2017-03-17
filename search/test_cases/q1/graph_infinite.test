@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 c# Graph where natural action choice leads to an infinite loop
+=======
+# Graph where natural action choice leads to an infinite loop
+>>>>>>> 044f01056fb99e5d66c085f0f54d39fd276247b9
 class: "GraphSearchTest"
 algorithm: "depthFirstSearch"
 

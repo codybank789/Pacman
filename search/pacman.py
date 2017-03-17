@@ -49,7 +49,11 @@ import util, layout
 import sys, types, time, random, os
 
 ###################################################
+<<<<<<< HEAD
 # YOUR INTERFACE TO THEameState PACMAN WORLD: A GameState #
+=======
+# YOUR INTERFACE TO THE PACMAN WORLD: A GameState #
+>>>>>>> 044f01056fb99e5d66c085f0f54d39fd276247b9
 ###################################################
 
 class GameState:
