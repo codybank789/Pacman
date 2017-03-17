@@ -95,7 +95,7 @@ def depthFirstSearch(problem):
             if (not otherState in visted):
                 dfs.push((otherState, direct + [otherDirect], visted + [otherState]))
             if (problem.isGoalState(otherState)):
-                return direct + [otherDirect]
+                return direct
     return dfs
     util.raiseNotDefined()
 
@@ -110,13 +110,23 @@ def breadthFirstSearch(problem):
             if (not otherState in visted):
                 bfs.push((otherState, direct + [otherDirect], visted + [otherState]))
             if (problem.isGoalState(otherState)):
-                return direct + [otherDirect]
+                return direct
     return bfs
     util.raiseNotDefined()
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
+    ucs = util.PriorityQueue()
+    ucs.push((problem.isGoalState(), [], []), 0)
+    while (not ucs.isEmpty()):
+        state, direct, visted = ucs.pop()
+        for otherState, otherDirect, otherVisted in problem.getSuccessors(state):
+            if (not otherState in visted):
+                ucs.push((otherState, direct + [otherDirect], visted + [otherState]), problem.getCostOfAction(direct + [otherDirect]))
+            if (problem.isGoalState(otherState)):
+                return direct
+    return ucs
     util.raiseNotDefined()
 
 def nullHeuristic(state, problem=None):
