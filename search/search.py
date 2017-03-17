@@ -87,25 +87,31 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
-<<<<<<< HEAD
     dfs = util.Stack()
     dfs.push((problem.getStartState(), [], []))
-    while (not dfs.isEmpty()):
+    while(not dfs.isEmpty()):
         state, direct, visted = dfs.pop()
-        for otherState, otherDirect, otherVisited in problem.getSuccessors(state):
+        for otherState,otherDirect,otherVisited in problem.getSuccessors(state):
             if (not otherState in visted):
-                dfs.push((otherState, direct + [otherDirect], visted + [otherVisited]))
+                dfs.push((otherState, direct + [otherDirect], visted + [otherState]))
             if (problem.isGoalState(otherState)):
-                return dfs
+                return direct + [otherDirect]
     return dfs
-
-=======
->>>>>>> 044f01056fb99e5d66c085f0f54d39fd276247b9
     util.raiseNotDefined()
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
+    bfs = util.Queue()
+    bfs.push((problem.getStartState(), [], []))
+    while (not bfs.isEmpty()):
+        state, direct, visted = bfs.pop()
+        for otherState, otherDirect, otherVisted in problem.getSuccessors(state):
+            if (not otherState in visted):
+                bfs.push((otherState, direct + [otherDirect], visted + [otherState]))
+            if (problem.isGoalState(otherState)):
+                return direct + [otherDirect]
+    return bfs
     util.raiseNotDefined()
 
 def uniformCostSearch(problem):
