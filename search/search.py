@@ -91,11 +91,13 @@ def depthFirstSearch(problem):
     dfs.push((problem.getStartState(), [], []))
     while(not dfs.isEmpty()):
         state, direct, visted = dfs.pop()
+        if state in visted:
+            continue
         for otherState,otherDirect,otherVisited in problem.getSuccessors(state):
             if (not otherState in visted):
                 dfs.push((otherState, direct + [otherDirect], visted + [otherState]))
             if (problem.isGoalState(otherState)):
-                return direct
+                return direct + [otherDirect]
     return dfs
     util.raiseNotDefined()
 
@@ -110,8 +112,8 @@ def breadthFirstSearch(problem):
             if (not otherState in visted):
                 bfs.push((otherState, direct + [otherDirect], visted + [otherState]))
             if (problem.isGoalState(otherState)):
-                return direct
-    return bfs
+                return direct + [otherDirect]
+    return []
     util.raiseNotDefined()
 
 def uniformCostSearch(problem):
@@ -125,8 +127,8 @@ def uniformCostSearch(problem):
             if (not otherState in visted):
                 ucs.push((otherState, direct + [otherDirect], visted + [otherState]), problem.getCostOfAction(direct + [otherDirect]))
             if (problem.isGoalState(otherState)):
-                return direct
-    return ucs
+                return direct + [otherDirect]
+    return []
     util.raiseNotDefined()
 
 def nullHeuristic(state, problem=None):
